@@ -2,6 +2,10 @@
 ## Juan Martin Trejo Arellano ##
 ## Script filename: plot1.R
 
+library(data.table)
+library(lubridate)
+library(dplyr)
+
 ## Set up initial parameters
 linux_wd <- "/home/martin-trejo/Dropbox/Coursera_Specializations/Data_Science_Specialization/04_Exploratory_Data_Analytics/Week1/week1_assignment"
 win_wd <- "C://Users//Martin-Trejo//Dropbox//Coursera_Specializations//Data_Science_Specialization//04_Exploratory_Data_Analytics//Week1//week1_assignment"
@@ -33,8 +37,6 @@ if (!file.exists(paste0("./data/", compressedFileName))){
   wholeDataTable <- fread(file = paste0("./data/", dataFileName), sep =";", 
                           na.strings = "?", stringsAsFactors = FALSE)
   print("Finished reading file ...")
-  
-  library(dplyr)
   
   filteredDT <- mutate(wholeDataTable, Date = dmy(Date))
   filteredDT <- subset(filteredDT, Date %in% c(strDate1 : strDate2))

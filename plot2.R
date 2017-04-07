@@ -2,6 +2,10 @@
 ## Juan Martin Trejo Arellano ##
 ## Script filename: plot2.R
 
+library(data.table)
+library(lubridate)
+library(dplyr)
+
 ## Set up initial parameters
 linux_wd <- "/home/martin-trejo/Dropbox/Coursera_Specializations/Data_Science_Specialization/04_Exploratory_Data_Analytics/Week1/week1_assignment"
 win_wd <- "C://Users//Martin-Trejo//Dropbox//Coursera_Specializations//Data_Science_Specialization//04_Exploratory_Data_Analytics//Week1//week1_assignment"
@@ -34,8 +38,6 @@ wholeDataTable <- fread(file = paste0("./data/", dataFileName), sep =";",
                         na.strings = "?", stringsAsFactors = FALSE)
 print("Finished reading file ...")
 
-library(dplyr)
-
 filteredDT <- mutate(wholeDataTable, Date = dmy(Date))
 filteredDT <- subset(filteredDT, Date %in% c(strDate1 : strDate2))
 
@@ -43,7 +45,7 @@ plotFigure <- function (){
   
   par(mfrow = c(1,1))
   plot(filteredDT$Global_active_power, type = "l", xaxt = "n",
-       ylab = "Global Active Power (killowatts)", xlab="")
+       ylab = "Global Active Power (kilowatts)", xlab="")
   axis(1, at= c(grep(unique(weekdays(filteredDT$Date))[1],weekdays(filteredDT$Date))[1],
                 grep(unique(weekdays(filteredDT$Date))[2],weekdays(filteredDT$Date))[1],
                 length(filteredDT$Date)), c(unique(weekdays(filteredDT$Date, abbreviate =TRUE)),
