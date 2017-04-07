@@ -1,6 +1,6 @@
 ## Week 1 Assignment ##
 ## Juan Martin Trejo Arellano ##
-## Script filename: plot1.R
+## Script filename: plot2.R
 
 ## Set up initial parameters
 linux_wd <- "/home/martin-trejo/Dropbox/Coursera_Specializations/Data_Science_Specialization/04_Exploratory_Data_Analytics/Week1/week1_assignment"
